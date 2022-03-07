@@ -231,17 +231,25 @@ favorite_places<-tibble(
            -68.3725,-93.5100,-111.9293,-74.0018,-110.7624),
   lat=c(32.2315,40.7812,39.1038,32.2979,40.6461, 
         18.5601, 44.9690,33.5028, 40.7531,43.4799),
-  top3yesorno=c("yes","yes","yes", "no", "no,", "no", "no","no","no","no")
+  top3yesorno=c("yes","yes","yes", "no", "no", "no", "no","no","no","no")
 )
+favorite_places <- favorite_places %>% mutate(top3yesorno = as.factor(top3yesorno))
 ```
 
   * Create a `leaflet` map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3 (HINT: `colorFactor()`). Add a legend that explains what the colors mean.
 ```{r}
+pal<-colorFactor("viridis",
+                 domain=favorite_places$top3yesorno)
 leaflet(data = favorite_places) %>% 
   addTiles() %>% 
-  addMarkers(lng = ~long, 
+  addCircles(lng = ~long, 
              lat = ~lat, 
-             label = ~name_of_location) 
+             label = ~name_of_location,
+             weight = 10, 
+             opacity = 1, 
+             color = ~pal(top3yesorno)) %>% 
+  addLegend(position= "bottomright",pal=pal,values=~top3yesorno )
+
 ```
   
   

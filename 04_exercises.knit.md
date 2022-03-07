@@ -172,7 +172,7 @@ covid19 <- read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/mas
 ```
 
 ```
-## Rows: 40494 Columns: 5
+## Rows: 40550 Columns: 5
 ```
 
 ```
@@ -581,23 +581,30 @@ favorite_places<-tibble(
            -68.3725,-93.5100,-111.9293,-74.0018,-110.7624),
   lat=c(32.2315,40.7812,39.1038,32.2979,40.6461, 
         18.5601, 44.9690,33.5028, 40.7531,43.4799),
-  top3yesorno=c("yes","yes","yes", "no", "no,", "no", "no","no","no","no")
+  top3yesorno=c("yes","yes","yes", "no", "no", "no", "no","no","no","no")
 )
+favorite_places <- favorite_places %>% mutate(top3yesorno = as.factor(top3yesorno))
 ```
 
   * Create a `leaflet` map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3 (HINT: `colorFactor()`). Add a legend that explains what the colors mean.
 
 ```r
+pal<-colorFactor("viridis",
+                 domain=favorite_places$top3yesorno)
 leaflet(data = favorite_places) %>% 
   addTiles() %>% 
-  addMarkers(lng = ~long, 
+  addCircles(lng = ~long, 
              lat = ~lat, 
-             label = ~name_of_location)
+             label = ~name_of_location,
+             weight = 10, 
+             opacity = 1, 
+             color = ~pal(top3yesorno)) %>% 
+  addLegend(position= "bottomright",pal=pal,values=~top3yesorno )
 ```
 
 ```{=html}
-<div id="htmlwidget-dab043a413beac9ea438" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dab043a413beac9ea438">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[32.2315,40.7812,39.1038,32.2979,40.6461,18.5601,44.969,33.5028,40.7531,43.4799],[-110.9643,-73.9665,-108.6829,-110.9187,-111.498,-68.3725,-93.51,-111.9293,-74.0018,-110.7624],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,["Time Market","Central Park","Godparents house","Home","Park City","Punta Cana","Crisp &amp; Green","The Chop Shop","Blue Bottle Coffee","Jackson Hole"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[18.5601,44.969],"lng":[-111.9293,-68.3725]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f55064efb24c44246ac4" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f55064efb24c44246ac4">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[[32.2315,40.7812,39.1038,32.2979,40.6461,18.5601,44.969,33.5028,40.7531,43.4799],[-110.9643,-73.9665,-108.6829,-110.9187,-111.498,-68.3725,-93.51,-111.9293,-74.0018,-110.7624],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#FDE725","#FDE725","#FDE725","#440154","#440154","#440154","#440154","#440154","#440154","#440154"],"weight":10,"opacity":1,"fill":true,"fillColor":["#FDE725","#FDE725","#FDE725","#440154","#440154","#440154","#440154","#440154","#440154","#440154"],"fillOpacity":0.2},null,null,["Time Market","Central Park","Godparents house","Home","Park City","Punta Cana","Crisp &amp; Green","The Chop Shop","Blue Bottle Coffee","Jackson Hole"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addLegend","args":[{"colors":["#440154","#FDE725"],"labels":["no","yes"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"factor","title":"top3yesorno","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[18.5601,44.969],"lng":[-111.9293,-68.3725]}},"evals":[],"jsHooks":[]}</script>
 ```
   
   
