@@ -227,13 +227,273 @@ These exercises will reiterate what you learned in the "Mapping data with R" tut
 
   1. Add the `Starbucks` locations to a world map. Add an aesthetic to the world map that sets the color of the points according to the ownership type. What, if anything, can you deduce from this visualization?  
 
+```r
+world <- get_stamenmap(
+    bbox = c(left = -180, bottom = -57, right = 179, top = 82.1), 
+    maptype = "terrain",
+    zoom = 2)
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/0/0.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/1/0.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/2/0.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/3/0.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/0/1.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/1/1.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/2/1.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/3/1.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/0/2.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/1/2.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/2/2.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/2/3/2.png
+```
+
+```r
+ggmap(world) + 
+  geom_point(data = Starbucks, 
+             aes(x = Longitude, y = Latitude, color= `Ownership Type`), 
+             alpha = .3, 
+             size = .1) +
+  theme_map()
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_point).
+```
+
+![](04_exercises_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+
   2. Construct a new map of Starbucks locations in the Twin Cities metro area (approximately the 5 county metro area).  
 
+```r
+twin_cities_metro<-get_stamenmap(
+    bbox = c(left = -93.4847, bottom = 44.7501, right = -92.7363, top = 45.1302), 
+    maptype = "terrain",
+    zoom = 10)
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/246/367.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/247/367.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/248/367.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/246/368.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/247/368.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/248/368.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/246/369.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/247/369.png
+```
+
+```
+## Source : http://tile.stamen.com/terrain/10/248/369.png
+```
+
+```r
+ggmap(twin_cities_metro) +
+  geom_point(data = Starbucks, 
+             aes(x = Longitude, y = Latitude), 
+             alpha = .8, 
+             size = .5) +
+  theme_map()
+```
+
+```
+## Warning: Removed 25488 rows containing missing values (geom_point).
+```
+
+![](04_exercises_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+
   3. In the Twin Cities plot, play with the zoom number. What does it do?  (just describe what it does - don't actually include more than one map).  
+  The bigger I made the zoom number the further zoomed out it is and the easier it is to read. The smaller the zoom number it becomes difficult to interpret the map and is blurry.
 
   4. Try a couple different map types (see `get_stamenmap()` in help and look at `maptype`). Include a map with one of the other map types.  
 
+```r
+twin_cities_metro<-get_stamenmap(
+    bbox = c(left = -93.4847, bottom = 44.7501, right = -92.7363, top = 45.1302), 
+    maptype = "watercolor",
+    zoom = 10)
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/246/367.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/247/367.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/248/367.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/246/368.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/247/368.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/248/368.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/246/369.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/247/369.jpg
+```
+
+```
+## Source : http://tile.stamen.com/watercolor/10/248/369.jpg
+```
+
+```r
+ggmap(twin_cities_metro) +
+  geom_point(data = Starbucks, 
+             aes(x = Longitude, y = Latitude), 
+             alpha = .8, 
+             size = .5) +
+  theme_map()
+```
+
+```
+## Warning: Removed 25488 rows containing missing values (geom_point).
+```
+
+![](04_exercises_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
+
   5. Add a point to the map that indicates Macalester College and label it appropriately. There are many ways you can do think, but I think it's easiest with the `annotate()` function (see `ggplot2` cheatsheet).
+
+```r
+twin_cities_metro<-get_stamenmap(
+    bbox = c(left = -93.4847, bottom = 44.7501, right = -92.7363, top = 45.1302), 
+    maptype = "toner",
+    zoom = 10)
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/246/367.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/247/367.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/248/367.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/246/368.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/247/368.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/248/368.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/246/369.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/247/369.png
+```
+
+```
+## Source : http://tile.stamen.com/toner/10/248/369.png
+```
+
+```r
+ggmap(twin_cities_metro) +
+  geom_point(data = Starbucks, 
+             aes(x = Longitude, y = Latitude), 
+             alpha = .8, 
+             size = .5) +
+  annotate(geom = "point",
+           x=-93.1691,
+           y=44.9379,
+           color="orange",
+           size=2)+
+  theme_map()+
+  annotate(geom = "text",
+           x=-93.1691,
+           y=44.9379,
+           label="Macalester College",
+           color="orange",
+           size=3)
+```
+
+```
+## Warning: Removed 25488 rows containing missing values (geom_point).
+```
+
+![](04_exercises_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+  
 
 ### Choropleth maps with Starbucks data (`geom_map()`)
 
@@ -369,6 +629,7 @@ mpls_nbhd <- st_read("Minneapolis_Neighborhoods/Minneapolis_Neighborhoods.shp", 
 ## GitHub link
 
   19. Below, provide a link to your GitHub page with this set of Weekly Exercises. Specifically, if the name of the file is 04_exercises.Rmd, provide a link to the 04_exercises.md file, which is the one that will be most readable on GitHub.
+  https://github.com/gdiaz987/exercise4.git
 
 
 **DID YOU REMEMBER TO UNCOMMENT THE OPTIONS AT THE TOP?**
