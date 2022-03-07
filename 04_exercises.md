@@ -574,7 +574,32 @@ starbucks_us_by_state %>%
 
   * Create a data set using the `tibble()` function that has 10-15 rows of your favorite places. The columns will be the name of the location, the latitude, the longitude, and a column that indicates if it is in your top 3 favorite locations or not. For an example of how to use `tibble()`, look at the `favorite_stp_by_lisa` I created in the data R code chunk at the beginning.  
 
-  * Create a `leaflet` map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3 (HINT: `colorFactor()`). Add a legend that explains what the colors mean.  
+```r
+favorite_places<-tibble(
+  name_of_location=c("Time Market", "Central Park", "Godparents house", "Home", "Park City", "Punta Cana", "Crisp & Green", "The Chop Shop", "Blue Bottle Coffee", "Jackson Hole"),
+  long = c(-110.9643,-73.9665,-108.6829,-110.9187,-111.4980,
+           -68.3725,-93.5100,-111.9293,-74.0018,-110.7624),
+  lat=c(32.2315,40.7812,39.1038,32.2979,40.6461, 
+        18.5601, 44.9690,33.5028, 40.7531,43.4799),
+  top3yesorno=c("yes","yes","yes", "no", "no,", "no", "no","no","no","no")
+)
+```
+
+  * Create a `leaflet` map that uses circles to indicate your favorite places. Label them with the name of the place. Choose the base map you like best. Color your 3 favorite places differently than the ones that are not in your top 3 (HINT: `colorFactor()`). Add a legend that explains what the colors mean.
+
+```r
+leaflet(data = favorite_places) %>% 
+  addTiles() %>% 
+  addMarkers(lng = ~long, 
+             lat = ~lat, 
+             label = ~name_of_location) 
+```
+
+```{=html}
+<div id="htmlwidget-0ca417410e6d9ee482bd" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0ca417410e6d9ee482bd">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[[32.2315,40.7812,39.1038,32.2979,40.6461,18.5601,44.969,33.5028,40.7531,43.4799],[-110.9643,-73.9665,-108.6829,-110.9187,-111.498,-68.3725,-93.51,-111.9293,-74.0018,-110.7624],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,["Time Market","Central Park","Godparents house","Home","Park City","Punta Cana","Crisp &amp; Green","The Chop Shop","Blue Bottle Coffee","Jackson Hole"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[18.5601,44.969],"lng":[-111.9293,-68.3725]}},"evals":[],"jsHooks":[]}</script>
+```
+  
   
   * Connect all your locations together with a line in a meaningful way (you may need to order them differently in the original data).  
   
