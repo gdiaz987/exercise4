@@ -536,6 +536,38 @@ starbucks_with_2018_pop_est <-
 
   7. Create a choropleth map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the US (except Hawaii and Alaska), add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.
 
+```r
+starbucks_us_by_state <- Starbucks %>% 
+  filter(Country == "US") %>% 
+  count(`State/Province`) %>% 
+  mutate(state_name = str_to_lower(abbr2state(`State/Province`)))
+
+states_map <- map_data("state")
+
+starbucks_us_by_state %>% 
+  left_join(census_pop_est_2018,
+            by =c("state_name"="state")) %>% 
+  mutate(starbucksper10=(n/est_pop_2018)*10000) %>% 
+ ggplot() +
+ geom_map(map = states_map,
+           aes(map_id = state_name,
+               fill = starbucksper10)) +
+   geom_point(data = Starbucks %>% 
+                filter(Country == "US" , 
+                       !(`State/Province` %in% c("HI", "AK"))),
+             aes(x = Longitude, y = Latitude),
+             size = .05,
+             alpha = .2, 
+             color = "goldenrod")+
+  expand_limits(x = states_map$long, y = states_map$lat) + 
+  labs(title = "Starbucks per 10000 Americans")+
+  theme_map()+
+  theme(legend.background = element_blank())
+```
+
+![](04_exercises_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
+
 ### A few of your favorite things (`leaflet`)
 
   8. In this exercise, you are going to create a single map of some of your favorite places! The end result will be one map that satisfies the criteria below. 
