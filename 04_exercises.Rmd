@@ -307,7 +307,20 @@ departures<-Trips %>%
   10. Only 14.4% of the trips in our data are carried out by casual users. Create a plot that shows which area(s) have stations with a much higher percentage of departures by casual users. What patterns do you notice? Also plot this on top of a map. I think it will be more clear what the patterns are.
   
 ```{r}
+proportion_casual<-Trips %>% 
+  group_by(sstation, client) %>% 
+  summarise(sum_station=n()) %>%
+  group_by(sstation) %>% 
+  mutate(total=sum(sum_station),
+         prop=sum_station/total) %>% 
+  filter(client=="Casual") %>% 
+  left_join(Stations,
+         by=c("sstation"="name")) 
 
+
+  ggmap(msp_map) + 
+  geom_point(data=proportion_casual,aes(x=long, y=lat,color=prop))+
+   labs(title="Which areas have stations with a higher percentage of departures by casual users", x="longitude", y="latitude")
 ```
   
 ### COVID-19 data

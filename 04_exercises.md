@@ -606,8 +606,8 @@ leaflet(data = favorite_places) %>%
 ```
 
 ```{=html}
-<div id="htmlwidget-ef2b7cee9861d2bbfeab" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ef2b7cee9861d2bbfeab">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[[32.2315,40.7812,39.1038,32.2979,40.6461,18.5601,44.969,33.5028,40.7531,43.4799],[-110.9643,-73.9665,-108.6829,-110.9187,-111.498,-68.3725,-93.51,-111.9293,-74.0018,-110.7624],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#FDE725","#FDE725","#FDE725","#440154","#440154","#440154","#440154","#440154","#440154","#440154"],"weight":10,"opacity":1,"fill":true,"fillColor":["#FDE725","#FDE725","#FDE725","#440154","#440154","#440154","#440154","#440154","#440154","#440154"],"fillOpacity":0.2},null,null,["Time Market","Central Park","Godparents house","Home","Park City","Punta Cana","Crisp &amp; Green","The Chop Shop","Blue Bottle Coffee","Jackson Hole"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addPolylines","args":[[[[{"lng":[-110.9643,-73.9665,-108.6829,-110.9187,-111.498,-68.3725,-93.51,-111.9293,-74.0018,-110.7624],"lat":[32.2315,40.7812,39.1038,32.2979,40.6461,18.5601,44.969,33.5028,40.7531,43.4799]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"crimson","weight":5,"opacity":0.5,"fill":false,"fillColor":"crimson","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#440154","#FDE725"],"labels":["no","yes"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"factor","title":"top3yesorno","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[18.5601,44.969],"lng":[-111.9293,-68.3725]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4714cde14d7d4c387159" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4714cde14d7d4c387159">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[[32.2315,40.7812,39.1038,32.2979,40.6461,18.5601,44.969,33.5028,40.7531,43.4799],[-110.9643,-73.9665,-108.6829,-110.9187,-111.498,-68.3725,-93.51,-111.9293,-74.0018,-110.7624],10,null,null,{"interactive":true,"className":"","stroke":true,"color":["#FDE725","#FDE725","#FDE725","#440154","#440154","#440154","#440154","#440154","#440154","#440154"],"weight":10,"opacity":1,"fill":true,"fillColor":["#FDE725","#FDE725","#FDE725","#440154","#440154","#440154","#440154","#440154","#440154","#440154"],"fillOpacity":0.2},null,null,["Time Market","Central Park","Godparents house","Home","Park City","Punta Cana","Crisp &amp; Green","The Chop Shop","Blue Bottle Coffee","Jackson Hole"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addPolylines","args":[[[[{"lng":[-110.9643,-73.9665,-108.6829,-110.9187,-111.498,-68.3725,-93.51,-111.9293,-74.0018,-110.7624],"lat":[32.2315,40.7812,39.1038,32.2979,40.6461,18.5601,44.969,33.5028,40.7531,43.4799]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"crimson","weight":5,"opacity":0.5,"fill":false,"fillColor":"crimson","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#440154","#FDE725"],"labels":["no","yes"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"factor","title":"top3yesorno","extra":null,"layerId":null,"className":"info legend","group":null}]}],"limits":{"lat":[18.5601,44.969],"lng":[-111.9293,-68.3725]}},"evals":[],"jsHooks":[]}</script>
 ```
   
   
@@ -712,6 +712,33 @@ departures<-Trips %>%
   10. Only 14.4% of the trips in our data are carried out by casual users. Create a plot that shows which area(s) have stations with a much higher percentage of departures by casual users. What patterns do you notice? Also plot this on top of a map. I think it will be more clear what the patterns are.
   
 
+```r
+proportion_casual<-Trips %>% 
+  group_by(sstation, client) %>% 
+  summarise(sum_station=n()) %>%
+  group_by(sstation) %>% 
+  mutate(total=sum(sum_station),
+         prop=sum_station/total) %>% 
+  filter(client=="Casual") %>% 
+  left_join(Stations,
+         by=c("sstation"="name")) 
+```
+
+```
+## `summarise()` has grouped output by 'sstation'. You can override using the `.groups` argument.
+```
+
+```r
+  ggmap(msp_map) + 
+  geom_point(data=proportion_casual,aes(x=long, y=lat,color=prop))+
+   labs(title="Which areas have stations with a higher percentage of departures by casual users", x="longitude", y="latitude")
+```
+
+```
+## Warning: Removed 13 rows containing missing values (geom_point).
+```
+
+![](04_exercises_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
   
 ### COVID-19 data
 
