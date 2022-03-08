@@ -186,6 +186,13 @@ starbucks_with_2018_pop_est <-
 ```
 
   6. **`dplyr` review**: Look through the code above and describe what each line of code does.
+#Pulls up the data we are going to be using, which in this case is the estimated population in 2018 of each US State.
+  - Separates the state variable in the data into two columns, dot, and state.
+  - Removes the dot column from the data.
+  - Creates a new data set.
+  - Uses the starbucks_us_by_state data as a base and the pipe indicates we want whatever changes below to be added to that data set.
+  - Taking the variable state name from the census data and changing it's name to state.
+  - Creating a new variable named starbucks_per_10000 that gives us the number of starbucks per 10000 people given the est_pop_2018 data.
 
   7. Create a choropleth map that shows the number of Starbucks per 10,000 people on a map of the US. Use a new fill color, add points for all Starbucks in the US (except Hawaii and Alaska), add an informative title for the plot, and include a caption that says who created the plot (you!). Make a conclusion about what you observe.
 ```{r}
