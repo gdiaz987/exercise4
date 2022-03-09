@@ -384,6 +384,15 @@ covid_over_10 %>%
 These exercises use the datasets `MplsStops` and `MplsDemo` from the `carData` library. Search for them in Help to find out more information.
 
   14. Use the `MplsStops` dataset to find out how many stops there were for each neighborhood and the proportion of stops that were for a suspicious vehicle or person. Sort the results from most to least number of stops. Save this as a dataset called `mpls_suspicious` and display the table.  
+```{r}
+mpls_suspicious<-MplsStops %>% 
+  group_by(neighborhood) %>% 
+  summarise(n=n(),poportion_of_suspicious=mean(problem=="suspicious")) %>% 
+  arrange(desc(n))
+
+mpls_suspicious
+```
+  
   
   15. Use a `leaflet` map and the `MplsStops` dataset to display each of the stops on a map as a small point. Color the points differently depending on whether they were for suspicious vehicle/person or a traffic stop (the `problem` variable). HINTS: use `addCircleMarkers`, set `stroke = FAlSE`, use `colorFactor()` to create a palette.  
   
