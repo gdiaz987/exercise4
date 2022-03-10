@@ -416,8 +416,25 @@ leaflet(data = MplsStops) %>%
 ```{r, eval=FALSE}
 mpls_nbhd <- st_read("Minneapolis_Neighborhoods/Minneapolis_Neighborhoods.shp", quiet = TRUE)
 ```
+```{r}
+mpls_all<-mpls_nbhd%>% 
+  left_join(mpls_suspicious,MplsDemo,
+            by =c("BDNAME"="neighborhood"))
+```
 
   17. Use `leaflet` to create a map from the `mpls_all` data  that colors the neighborhoods by `prop_suspicious`. Display the neighborhood name as you scroll over it. Describe what you observe in the map.
+```{r}
+neighborhood_suspicion<-colorNumeric("viridis",
+                 domain=mpls_all$poportion_of_suspicious)
+leaflet(mpls_all) %>% 
+  addTiles() %>% 
+  addPolygons(stroke=FALSE,
+             fillColor = ~neighborhood_suspicion(poportion_of_suspicious),
+             fillOpacity = .7,
+             smoothFactor = .5) %>% 
+  addLegend(position= "bottomright",pal = neighborhood_suspicion ,values=~poportion_of_suspicious)
+```
+  
   
   18. Use `leaflet` to create a map of your own choosing. Come up with a question you want to try to answer and use the map to help answer that question. Describe what your map shows. 
   
