@@ -413,7 +413,7 @@ leaflet(data = MplsStops) %>%
   
   16. Save the folder from moodle called Minneapolis_Neighborhoods into your project/repository folder for this assignment. Make sure the folder is called Minneapolis_Neighborhoods. Use the code below to read in the data and make sure to **delete the `eval=FALSE`**. Although it looks like it only links to the .sph file, you need the entire folder of files to create the `mpls_nbhd` data set. These data contain information about the geometries of the Minneapolis neighborhoods. Using the `mpls_nbhd` dataset as the base file, join the `mpls_suspicious` and `MplsDemo` datasets to it by neighborhood (careful, they are named different things in the different files). Call this new dataset `mpls_all`.
 
-```{r, eval=FALSE}
+```{r}
 mpls_nbhd <- st_read("Minneapolis_Neighborhoods/Minneapolis_Neighborhoods.shp", quiet = TRUE)
 ```
 ```{r}
@@ -431,12 +431,16 @@ leaflet(mpls_all) %>%
   addPolygons(stroke=FALSE,
              fillColor = ~neighborhood_suspicion(poportion_of_suspicious),
              fillOpacity = .7,
-             smoothFactor = .5) %>% 
+             smoothFactor = .5,
+             label=~BDNAME) %>% 
   addLegend(position= "bottomright",pal = neighborhood_suspicion ,values=~poportion_of_suspicious)
 ```
   
   
   18. Use `leaflet` to create a map of your own choosing. Come up with a question you want to try to answer and use the map to help answer that question. Describe what your map shows. 
+```{r}
+
+```
   
   
 ## GitHub link
