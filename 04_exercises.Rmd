@@ -439,7 +439,18 @@ leaflet(mpls_all) %>%
   
   18. Use `leaflet` to create a map of your own choosing. Come up with a question you want to try to answer and use the map to help answer that question. Describe what your map shows. 
 ```{r}
-
+race_policestops<-colorFactor("viridis",
+                 domain=MplsStops$race)
+leaflet(data = MplsStops) %>% 
+  addTiles() %>% 
+  addCircleMarkers(lng = ~long, 
+             lat = ~lat, 
+             label = ~policePrecinct,
+             radius=.5,
+             weight = 2, 
+             opacity = 1, 
+             color = ~race_policestops(race)) %>% 
+  addLegend(position= "bottomright",pal = race_policestops,values=~race )
 ```
   
   
